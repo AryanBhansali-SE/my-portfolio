@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const isCI = process.env.GITHUB_ACTIONS === "true";
-const base = isCI ? "/Portfolio" : "";
+const base = isCI ? "/my-portfolio" : "";
 
 const nextConfig = {
   // CRITICAL: Enables static HTML export
