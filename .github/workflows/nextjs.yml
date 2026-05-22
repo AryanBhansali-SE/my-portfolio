@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: web # 👈 build inside /web
+        working-directory: web
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,12 +27,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: web/package-lock.json
 
       - name: Install deps
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Build (static export)
         run: npm run build
@@ -40,7 +40,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: web/out # 👈 export dir from Next.js
+          path: web/out
 
   deploy:
     needs: build
