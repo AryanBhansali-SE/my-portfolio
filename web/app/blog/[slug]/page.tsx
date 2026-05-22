@@ -17,7 +17,7 @@ interface PostData {
 // ------------------------------------------------------------------
 export async function generateStaticParams() {
   // NOTE: Adjusting path to correctly find posts inside the web/app/blog/posts folder.
-  const postsDirectory = path.join(process.cwd(), "app", "blog", "posts");
+  const postsDirectory = path.join(process.cwd(), "app", "posts");
 
   // Get all file names in the directory
   const filenames = fs.readdirSync(postsDirectory);
@@ -37,16 +37,11 @@ export async function generateStaticParams() {
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   // Adjusting path to correctly find the specific post file
-  const filePath = path.join(
-    process.cwd(),
-    "app",
-    "blog",
-    "posts",
-    `${params.slug}.md`
-  );
+  const filePath = path.join(process.cwd(), "app", "posts", `${slug}.md`);
 
   // Your existing logic starts here:
   const fileContents = fs.readFileSync(filePath, "utf-8");

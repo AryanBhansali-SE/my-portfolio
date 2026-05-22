@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 
 export default function BlogPage() {
-  const postsDir = path.join(process.cwd(), "posts");
+  const postsDir = path.join(process.cwd(), "app", "posts");
   const files = fs.readdirSync(postsDir);
   const posts = files.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
