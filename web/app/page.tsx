@@ -12,6 +12,7 @@ import { SkillsSection } from "./components/SkillsSection";
 import { EducationSection } from "./components/EducationSection";
 import { CertificationsSection } from "./components/CertificationsSection";
 import { ContactSection } from "./components/ContactSection";
+import { CustomCursor } from "./components/CustomCursor";
 
 export default function HomePage() {
   const [loading, setLoading]   = useState(true);
@@ -28,6 +29,7 @@ export default function HomePage() {
 
   return (
     <>
+      <CustomCursor />
       {/* ── Loading screen ──────────────────────────────────── */}
       <AnimatePresence>
         {loading && (
