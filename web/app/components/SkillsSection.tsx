@@ -43,7 +43,7 @@ export function SkillsSection() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">04 // Tech Stack Engine</div>
-          <h2 className="sec-title">Skills</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"Skills"}>Skills</span></h2>
           <p className="sec-desc">
             The full technology stack — from AI reasoning to production infrastructure.
           </p>
