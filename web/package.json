@@ -16,8 +16,11 @@
   },
   "dependencies": {
     "framer-motion": "^12.40.0",
+    "gray-matter": "^4.0.3",
     "next": "^15.5.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
   }
 }
