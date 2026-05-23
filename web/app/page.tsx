@@ -14,22 +14,45 @@ import { CertificationsSection } from "./components/CertificationsSection";
 import { ContactSection } from "./components/ContactSection";
 
 export default function HomePage() {
-  const [loading, setLoading] = useState(true);
-  const handleLaunch = useCallback(() => setLoading(false), []);
+  const [loading, setLoading]   = useState(true);
+  const [flashing, setFlashing] = useState(false);
+
+  const handleLaunch = useCallback(() => {
+    /* 1. Flash fires */
+    setFlashing(true);
+    /* 2. Main content starts fading in slightly after flash peak */
+    setTimeout(() => setLoading(false),   180);
+    /* 3. Flash fades out */
+    setTimeout(() => setFlashing(false),  700);
+  }, []);
 
   return (
     <>
-      {/* ── Loading overlay ─────────────────────────────────── */}
+      {/* ── Loading screen ──────────────────────────────────── */}
       <AnimatePresence>
         {loading && (
           <motion.div
             key="loader"
             style={{ position: "fixed", inset: 0, zIndex: 9999 }}
             exit={{ opacity: 0, scale: 1.04 }}
-            transition={{ duration: 0.75, ease: [0.43, 0.13, 0.23, 0.96] }}
+            transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
             <LoadingScreen onComplete={handleLaunch} />
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Cinematic reveal flash ───────────────────────────── */}
+      <AnimatePresence>
+        {flashing && (
+          <motion.div
+            key="flash"
+            className="reveal-flash"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+          />
         )}
       </AnimatePresence>
 
@@ -37,7 +60,7 @@ export default function HomePage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ duration: 0.9, delay: 0.15 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
       >
         <Navigation />
 
@@ -62,9 +85,7 @@ export default function HomePage() {
         <footer className="site-footer">
           <div className="container footer-inner">
             <span>© {new Date().getFullYear()} Aryan Bhansali</span>
-            <a href="#hero" className="footer-top">
-              Back to Top ↑
-            </a>
+            <a href="#hero" className="footer-top">Back to Top ↑</a>
           </div>
         </footer>
       </motion.div>

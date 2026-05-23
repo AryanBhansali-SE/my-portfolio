@@ -1395,3 +1395,317 @@ button { font-family: inherit; }
 }
 
 .footer-top:hover { color: var(--text); }
+
+/* ─── Reveal Flash ────────────────────────────────────────────── */
+.reveal-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(0, 212, 255, 0.55) 0%,
+    rgba(0, 212, 255, 0.15) 35%,
+    rgba(124, 58, 237, 0.08) 60%,
+    transparent 75%
+  );
+}
+
+/* ─── Hero 2-column layout ────────────────────────────────────── */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text { display: flex; flex-direction: column; }
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-visual { order: -1; } /* Photo above text on mobile */
+}
+
+/* ─── Holographic Photo ───────────────────────────────────────── */
+.holo-wrap {
+  position: relative;
+  width: 300px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  .holo-wrap { width: 240px; margin: 0 auto; }
+}
+
+/* Outer pulsing rings */
+.holo-ring {
+  position: absolute;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  pointer-events: none;
+}
+
+.holo-ring--1 {
+  inset: -12px;
+  animation: ring-pulse 4s ease-in-out infinite;
+}
+
+.holo-ring--2 {
+  inset: -22px;
+  border-color: rgba(0, 212, 255, 0.08);
+  animation: ring-pulse 4s ease-in-out 0.5s infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0); }
+  50%       { box-shadow: 0 0 24px 2px rgba(0,212,255,0.18); }
+}
+
+/* Card */
+.holo-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.12),
+    0 0 28px rgba(0, 212, 255, 0.22),
+    0 0 72px rgba(0, 212, 255, 0.08),
+    inset 0 0 24px rgba(0, 212, 255, 0.04);
+  animation: holo-card-flicker 12s ease-in-out infinite;
+}
+
+@keyframes holo-card-flicker {
+  0%, 75%, 100%  { opacity: 1; }
+  77%            { opacity: 0.78; }
+  79%            { opacity: 1; }
+  86%            { opacity: 0.88; }
+  88%            { opacity: 1; }
+}
+
+/* Image wrapper */
+.holo-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #000a14;
+}
+
+/* The photo — blue-tinted hologram look */
+.holo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.9) contrast(1.12) saturate(0.4) hue-rotate(165deg);
+  animation: holo-glitch 16s linear infinite;
+}
+
+@keyframes holo-glitch {
+  0%, 78%, 100% {
+    filter: brightness(0.9) contrast(1.12) saturate(0.4) hue-rotate(165deg);
+    transform: none;
+  }
+  79% {
+    filter: brightness(1.2) contrast(1.25) saturate(0.2) hue-rotate(158deg);
+    transform: translateX(-2px);
+  }
+  79.5% {
+    transform: translateX(3px);
+    filter: brightness(0.75) contrast(1.1) saturate(0.5) hue-rotate(172deg);
+  }
+  80% {
+    transform: none;
+    filter: brightness(0.9) contrast(1.12) saturate(0.4) hue-rotate(165deg);
+  }
+  80.5% {
+    transform: translateX(-1px);
+    filter: brightness(1.05) contrast(1.12) saturate(0.4) hue-rotate(165deg);
+  }
+  81% {
+    transform: none;
+  }
+}
+
+/* Scanline overlay */
+.holo-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.038) 2px,
+    rgba(0, 212, 255, 0.038) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Color gloss */
+.holo-gloss {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.1) 0%,
+    transparent 45%,
+    rgba(124, 58, 237, 0.07) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Materialize black wipe — animated away in JS */
+.holo-materialize {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 212, 255, 0.25) 100%
+  );
+  z-index: 10;
+  transform-origin: top;
+}
+
+/* Horizontal sweep line during materialize */
+.holo-sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.9),
+    rgba(255, 255, 255, 0.5),
+    rgba(0, 212, 255, 0.9),
+    transparent
+  );
+  z-index: 11;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 6px rgba(255,255,255,0.5);
+}
+
+/* Targeting corner brackets */
+.holo-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--cyan);
+  border-style: solid;
+  border-width: 0;
+  z-index: 5;
+  display: block;
+}
+
+.holo-corner--tl { top: 7px;  left: 7px;  border-top-width: 2px; border-left-width: 2px; }
+.holo-corner--tr { top: 7px;  right: 7px; border-top-width: 2px; border-right-width: 2px; }
+.holo-corner--bl { bottom: 52px; left: 7px;  border-bottom-width: 2px; border-left-width: 2px; }
+.holo-corner--br { bottom: 52px; right: 7px; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* Status bar at bottom of card */
+.holo-status {
+  position: relative;
+  padding: 9px 12px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.97), rgba(0, 5, 18, 0.92));
+  border-top: 1px solid rgba(0, 212, 255, 0.28);
+}
+
+.holo-status-label {
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-family: "SF Mono", "Fira Code", monospace;
+  margin-bottom: 6px;
+}
+
+.holo-status-bar {
+  height: 1px;
+  background: rgba(0, 212, 255, 0.12);
+  margin-bottom: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-status-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: status-sweep 2.8s ease-in-out infinite;
+}
+
+@keyframes status-sweep {
+  0%   { left: -40%; }
+  100% { left: 140%; }
+}
+
+.holo-status-name {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.holo-status-role {
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2px;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+/* Floating info badges */
+.holo-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(0, 212, 255, 0.32);
+  backdrop-filter: blur(12px);
+  z-index: 8;
+}
+
+.holo-badge--tl { top: 18px;   left: -62px; }
+.holo-badge--tr { top: 80px;   right: -58px; }
+.holo-badge--br { bottom: 64px; right: -58px; }
+
+@media (max-width: 960px) {
+  .holo-badge { display: none; }
+}
+
+.holo-badge-label {
+  font-size: 7px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: "SF Mono", monospace;
+}
+
+.holo-badge-value {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--cyan);
+  letter-spacing: 0.5px;
+}
+
+.holo-badge-value--green { color: var(--green); }
