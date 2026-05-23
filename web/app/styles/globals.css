@@ -1709,3 +1709,144 @@ button { font-family: inherit; }
 }
 
 .holo-badge-value--green { color: var(--green); }
+
+/* ═══════════════════════════════════════════════════════════════
+   GAME-REVEAL POLISH — custom cursor, hero particles, glitch reveal
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Custom holographic cursor ──────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html, body { cursor: none; }
+  a, button, [role="button"], [data-magnetic],
+  input, textarea, select, label { cursor: none; }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan), 0 0 28px rgba(0, 212, 255, 0.45);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.55);
+  background: radial-gradient(circle, rgba(0,212,255,0.06), transparent 70%);
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.cursor-ring--lock {
+  border-color: var(--violet);
+  background: radial-gradient(circle, rgba(124,58,237,0.18), transparent 70%);
+  box-shadow: 0 0 22px rgba(124, 58, 237, 0.45);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ─── Hero particle canvas ───────────────────────────────────── */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 55%, transparent 100%);
+}
+
+.hero-section { overflow: hidden; }
+.hero-section > .container { position: relative; z-index: 2; }
+
+/* ─── Glitch reveal for section titles ───────────────────────── */
+.sec-title {
+  position: relative;
+  display: inline-block;
+}
+
+.sec-title::before,
+.sec-title::after {
+  content: attr(data-text, "");
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Animate on scroll-into-view via :has fallback — use animation on first paint */
+@keyframes glitch-rgb-1 {
+  0%   { opacity: 0.9; transform: translate(0, 0); }
+  10%  { transform: translate(-2px, 1px); }
+  20%  { transform: translate(2px, -1px); }
+  30%  { transform: translate(-1px, 2px); }
+  40%  { transform: translate(1px, -2px); }
+  60%  { transform: translate(-2px, 0); }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+@keyframes glitch-rgb-2 {
+  0%   { opacity: 0.9; transform: translate(0, 0); }
+  15%  { transform: translate(2px, -1px); }
+  35%  { transform: translate(-2px, 1px); }
+  55%  { transform: translate(1px, 2px); }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+
+/* Use data-text + IntersectionObserver-free CSS: animate when title enters
+   through a once-only animation tied to the framer-motion reveal in JS. */
+.glitch-title {
+  position: relative;
+  display: inline-block;
+}
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.glitch-title::before {
+  color: var(--cyan);
+  animation: glitch-rgb-1 0.7s steps(8, end) 1 both;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+.glitch-title::after {
+  color: var(--violet);
+  animation: glitch-rgb-2 0.7s steps(8, end) 1 both;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-title::before, .glitch-title::after { animation: none; opacity: 0; }
+}
+
+/* ─── Reveal flash (cinematic, used by page.tsx) ─────────────── */
+.reveal-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.85), transparent 60%),
+    #ffffff;
+  mix-blend-mode: screen;
+}
