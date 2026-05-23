@@ -17,11 +17,6 @@ const CERTS = [
     name: "Python Essentials 2",
     href: "https://www.credly.com/badges/35cbb275-6579-46f6-9c77-157883d2e1e0/public_url",
   },
-  {
-    label: "Cisco",
-    name: "CCNA: Switching, Routing & Wireless",
-    href: "https://www.credly.com/badges/4630553f-6a83-4454-89f4-6def48e44b31/public_url",
-  },
 ];
 
 const ExternalIcon = () => (
