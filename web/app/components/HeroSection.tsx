@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { HoloPhoto } from "./HoloPhoto";
+import { HeroParticles } from "./HeroParticles";
 
 const TAGS = [
   "Text-to-SQL",
@@ -49,6 +50,7 @@ function FadeUp({
 export function HeroSection() {
   return (
     <section id="hero" className="hero-section">
+      <HeroParticles />
       <div className="container">
         <div className="hero-inner">
 

@@ -58,7 +58,7 @@ export function ExperienceSection() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">02 // Launch Milestones</div>
-          <h2 className="sec-title">Experience</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"Experience"}>Experience</span></h2>
           <p className="sec-desc">
             Production systems shipped at enterprise companies and in the wild.
           </p>

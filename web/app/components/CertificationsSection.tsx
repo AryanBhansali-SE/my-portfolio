@@ -42,7 +42,7 @@ export function CertificationsSection() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">06 // Verified Modules</div>
-          <h2 className="sec-title">Certifications</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"Certifications"}>Certifications</span></h2>
           <p className="sec-desc">Industry-verified credentials.</p>
         </motion.div>
 

@@ -62,7 +62,7 @@ export function ProjectsSection() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">03 // Featured Systems</div>
-          <h2 className="sec-title">Projects</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"Projects"}>Projects</span></h2>
           <p className="sec-desc">
             AI products designed and shipped end to end.
           </p>

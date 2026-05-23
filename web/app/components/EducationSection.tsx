@@ -25,7 +25,7 @@ export function EducationSection() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">05 // Foundation</div>
-          <h2 className="sec-title">Education</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"Education"}>Education</span></h2>
           <p className="sec-desc">
             The academic foundation behind the engineering.
           </p>
