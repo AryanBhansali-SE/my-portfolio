@@ -30,7 +30,7 @@ export function MissionBrief() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">01 // Mission Brief</div>
-          <h2 className="sec-title">The Core Directive</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"The Core Directive"}>The Core Directive</span></h2>
         </motion.div>
 
         <motion.div

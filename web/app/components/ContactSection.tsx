@@ -24,7 +24,7 @@ export function ContactSection() {
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <div className="sec-label">07 // Initiate Contact</div>
-          <h2 className="sec-title">Let&apos;s Build</h2>
+          <h2 className="sec-title"><span className="glitch-title" data-text={"Let's Build"}>Let&apos;s Build</span></h2>
         </motion.div>
 
         <div className="contact-layout">
