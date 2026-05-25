@@ -10,6 +10,11 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   ref.current = onComplete;
 
   useEffect(() => {
+    // Skip loading screen on return visits within the same session
+    if (typeof sessionStorage !== "undefined" && sessionStorage.getItem("ab-visited")) {
+      ref.current();
+      return;
+    }
     const t = [
       setTimeout(() => setPhase(1), 700),
       setTimeout(() => setPhase(2), 1400),
@@ -63,7 +68,12 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7, ease }}
-              onClick={() => ref.current()}
+              onClick={() => {
+                if (typeof sessionStorage !== "undefined") {
+                  sessionStorage.setItem("ab-visited", "1");
+                }
+                ref.current();
+              }}
             >
               <span>ENTER</span>
               <span className="ls-launch-arr">→</span>

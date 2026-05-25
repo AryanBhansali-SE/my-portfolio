@@ -1,5 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { SemanticSearchDemo } from "./SemanticSearchDemo";
 
 const EXPERIENCES = [
   {
@@ -15,6 +17,7 @@ const EXPERIENCES = [
       "Shipped via Microsoft Copilot Studio and a built-in chat interface; the system handles varied question patterns without hardcoded mappings.",
     ],
     chips: ["FastAPI", "Azure OpenAI", "Microsoft SQL Server", "Python", "Microsoft Copilot Studio"],
+    showDemo: false,
   },
   {
     moduleTag: "MODULE_02 // Freelance Delivery",
@@ -29,6 +32,7 @@ const EXPERIENCES = [
       "Continue to maintain performance, content updates, and issue resolution.",
     ],
     chips: ["React", "Tailwind CSS", "JavaScript", "HTML/CSS"],
+    showDemo: false,
   },
   {
     moduleTag: "MODULE_03 // Data Engineering",
@@ -44,10 +48,13 @@ const EXPERIENCES = [
       "Built pipelines to keep the search index current as datasets changed.",
     ],
     chips: ["Python", "BigQuery", "Vector Embeddings", "SQL"],
+    showDemo: true,
   },
 ];
 
 export function ExperienceSection() {
+  const [demoOpen, setDemoOpen] = useState(false);
+
   return (
     <section id="milestones" className="section">
       <div className="container">
@@ -102,15 +109,33 @@ export function ExperienceSection() {
                 ))}
               </ul>
 
-              <div className="chip-row">
-                {exp.chips.map((c) => (
-                  <span key={c} className="chip">{c}</span>
-                ))}
+              <div className="exp-card-footer">
+                <div className="chip-row">
+                  {exp.chips.map((c) => (
+                    <span key={c} className="chip">{c}</span>
+                  ))}
+                </div>
+
+                {exp.showDemo && (
+                  <button
+                    className="demo-trigger-btn"
+                    onClick={() => setDemoOpen(true)}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                    </svg>
+                    Try the Search
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {demoOpen && <SemanticSearchDemo onClose={() => setDemoOpen(false)} />}
+      </AnimatePresence>
     </section>
   );
 }

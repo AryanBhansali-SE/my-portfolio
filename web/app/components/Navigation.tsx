@@ -8,6 +8,7 @@ const LINKS = [
   { href: "#systems",    label: "Projects" },
   { href: "#engine",     label: "Skills" },
   { href: "#foundation", label: "Education" },
+  { href: "#verified",   label: "Certs" },
   { href: "#contact",    label: "Contact" },
 ];
 

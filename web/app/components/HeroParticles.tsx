@@ -106,7 +106,7 @@ export function HeroParticles() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 212, 255, 0.55)";
+        ctx.fillStyle = "rgba(181, 131, 12, 0.65)";
         ctx.fill();
       }
 
@@ -119,8 +119,8 @@ export function HeroParticles() {
           const dy = a.y - b.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < 120 * 120) {
-            const alpha = (1 - Math.sqrt(d2) / 120) * 0.18;
-            ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+            const alpha = (1 - Math.sqrt(d2) / 120) * 0.22;
+            ctx.strokeStyle = `rgba(181, 131, 12, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -133,8 +133,8 @@ export function HeroParticles() {
       // Cursor halo
       if (mouse.active) {
         const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 130);
-        g.addColorStop(0, "rgba(124, 58, 237, 0.18)");
-        g.addColorStop(1, "rgba(124, 58, 237, 0)");
+        g.addColorStop(0, "rgba(122, 58, 42, 0.13)");
+        g.addColorStop(1, "rgba(122, 58, 42, 0)");
         ctx.fillStyle = g;
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 130, 0, Math.PI * 2);

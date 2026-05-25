@@ -15,16 +15,16 @@ import { ContactSection } from "./components/ContactSection";
 import { CustomCursor } from "./components/CustomCursor";
 
 export default function HomePage() {
-  const [loading, setLoading]   = useState(true);
+  const [loading, setLoading] = useState(true);
   const [flashing, setFlashing] = useState(false);
 
   const handleLaunch = useCallback(() => {
     /* 1. Flash fires */
     setFlashing(true);
     /* 2. Main content starts fading in slightly after flash peak */
-    setTimeout(() => setLoading(false),   180);
+    setTimeout(() => setLoading(false), 180);
     /* 3. Flash fades out */
-    setTimeout(() => setFlashing(false),  700);
+    setTimeout(() => setFlashing(false), 700);
   }, []);
 
   return (
@@ -86,8 +86,18 @@ export default function HomePage() {
 
         <footer className="site-footer">
           <div className="container footer-inner">
-            <span>© {new Date().getFullYear()} Aryan Bhansali</span>
-            <a href="#hero" className="footer-top">Back to Top ↑</a>
+            <div className="footer-left">
+              <span className="footer-brand">Aryan Bhansali</span>
+              <span className="footer-copy">© {new Date().getFullYear()} · Built with Next.js</span>
+            </div>
+            <div className="footer-links">
+              <a href="https://github.com/aryanbhansali" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
+              <a href="https://linkedin.com/in/aryanbhansali10" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
+              <a href="aryan_resume.pdf" target="_blank" rel="noopener noreferrer" className="footer-link">Résumé</a>
+            </div>
+            <a href="#hero" className="footer-top">
+              Back to Top ↑
+            </a>
           </div>
         </footer>
       </motion.div>

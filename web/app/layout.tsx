@@ -3,10 +3,31 @@ import type { Metadata } from "next";
 import { StarField } from "./components/StarField";
 import { ScrollProgress } from "./components/ScrollProgress";
 
+const META_DESC =
+  "AI Engineer building dynamic NLQ systems and natural-language interfaces for enterprise data — semantic search, LLM-powered retrieval, and full-stack AI products. Shipping at Altius and Colt Technological Services.";
+
 export const metadata: Metadata = {
   title: "Aryan Bhansali — AI Engineer",
-  description:
-    "AI Engineer building dynamic NLQ systems and natural-language interfaces for enterprise data — semantic search, LLM-powered retrieval, and full-stack AI products.",
+  description: META_DESC,
+  metadataBase: new URL("https://aryanbhansali.vercel.app"),
+  openGraph: {
+    title: "Aryan Bhansali — AI Engineer",
+    description: META_DESC,
+    url: "https://aryanbhansali.vercel.app",
+    siteName: "Aryan Bhansali",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aryan Bhansali — AI Engineer",
+    description: META_DESC,
+    creator: "@aryanbhansali",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
