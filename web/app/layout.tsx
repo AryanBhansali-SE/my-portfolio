@@ -1,10 +1,12 @@
 import "./styles/globals.css";
 import type { Metadata } from "next";
+import { StarField } from "./components/StarField";
+import { ScrollProgress } from "./components/ScrollProgress";
 
 export const metadata: Metadata = {
   title: "Aryan Bhansali — AI Engineer",
   description:
-    "AI Engineer building natural-language interfaces for enterprise data. Text-to-SQL systems, semantic search, and LLM-powered retrieval.",
+    "AI Engineer building dynamic NLQ systems and natural-language interfaces for enterprise data — semantic search, LLM-powered retrieval, and full-stack AI products.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,10 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <StarField />
         <div className="bg-anim" aria-hidden="true" />
         <div className="bg-orb2" aria-hidden="true" />
         <div className="noise" aria-hidden="true" />
         <div className="vignette" aria-hidden="true" />
+        <ScrollProgress />
         {children}
       </body>
     </html>

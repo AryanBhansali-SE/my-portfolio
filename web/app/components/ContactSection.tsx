@@ -1,5 +1,8 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
+
+const EMAIL = "aryan.bhansali2004@gmail.com";
 
 const GHIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -14,6 +17,14 @@ const LIIcon = () => (
 );
 
 export function ContactSection() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section id="contact" className="section">
       <div className="container">
@@ -21,20 +32,19 @@ export function ContactSection() {
           initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="sec-label">07 // Initiate Contact</div>
           <h2 className="sec-title"><span className="glitch-title" data-text={"Let's Build"}>Let&apos;s Build</span></h2>
         </motion.div>
 
         <div className="contact-layout">
-          {/* Main card */}
           <motion.div
             className="contact-main"
             initial={{ opacity: 0, y: 70 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="contact-headline">Open to Opportunities</div>
             <p className="contact-desc">
@@ -42,66 +52,42 @@ export function ContactSection() {
               or full-stack development. I move fast, ship production code, and
               build systems that actually work.
             </p>
-            <a
-              href="mailto:aryan.bhansali2004@gmail.com"
-              className="contact-email-btn"
-            >
-              <span>✉</span> aryan.bhansali2004@gmail.com
-            </a>
+
+            <div className="contact-email-row">
+              <a href={`mailto:${EMAIL}`} className="contact-email-btn">
+                <span>✉</span> {EMAIL}
+              </a>
+              <button className="contact-copy-btn" onClick={copyEmail} aria-label="Copy email">
+                {copied ? "✓ Copied" : "Copy"}
+              </button>
+            </div>
           </motion.div>
 
-          {/* Link cards */}
           <motion.div
             className="contact-links"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.0, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a
-              href="https://github.com/aryanbhansali"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link-card"
-            >
-              <div className="contact-link-icon contact-link-icon--gh">
-                <GHIcon />
-              </div>
+            <a href="https://github.com/aryanbhansali" target="_blank" rel="noopener noreferrer" className="contact-link-card">
+              <div className="contact-link-icon contact-link-icon--gh"><GHIcon /></div>
               <div>
                 <div className="contact-link-label">GitHub</div>
                 <div className="contact-link-value">github.com/aryanbhansali</div>
               </div>
             </a>
 
-            <a
-              href="https://linkedin.com/in/aryanbhansali10"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link-card"
-            >
-              <div className="contact-link-icon contact-link-icon--li">
-                <LIIcon />
-              </div>
+            <a href="https://linkedin.com/in/aryanbhansali10" target="_blank" rel="noopener noreferrer" className="contact-link-card">
+              <div className="contact-link-icon contact-link-icon--li"><LIIcon /></div>
               <div>
                 <div className="contact-link-label">LinkedIn</div>
                 <div className="contact-link-value">linkedin.com/in/aryanbhansali10</div>
               </div>
             </a>
 
-            <a
-              href="aryan_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link-card"
-            >
-              <div
-                className="contact-link-icon"
-                style={{
-                  background: "rgba(0,212,255,0.1)",
-                  border: "1px solid rgba(0,212,255,0.25)",
-                  color: "var(--cyan)",
-                }}
-              >
+            <a href="aryan_resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-card">
+              <div className="contact-link-icon" style={{ background: "rgba(0,212,255,0.1)", border: "1px solid rgba(0,212,255,0.25)", color: "var(--cyan)" }}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM16 18H8v-2h8v2zm0-4H8v-2h8v2zm-3-4H8V8h5v2z" />
                 </svg>

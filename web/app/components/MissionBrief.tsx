@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const HIGHLIGHTS = [
   {
     icon: "⚡",
-    title: "Natural Language → SQL",
-    desc: "Built FastAPI middleware at Altius letting non-technical employees query enterprise databases in plain English.",
+    title: "Dynamic NLQ Interface",
+    desc: "Built a system at Altius that identifies user intent, constructs SQL queries dynamically, and returns results in plain English — live in production.",
   },
   {
     icon: "🔍",
@@ -43,8 +43,8 @@ export function MissionBrief() {
           <div className="mission-inner">
             <p className="mission-text">
               AI engineer who builds{" "}
-              <strong>natural-language interfaces to enterprise data</strong> —
-              text-to-SQL systems, semantic search, and LLM-powered retrieval.
+              <strong>dynamic NLQ systems and natural-language interfaces</strong> —
+              turning plain-English questions into live enterprise data, semantic search, and LLM-powered retrieval.
               Shipped production systems at{" "}
               <strong>Altius</strong> and{" "}
               <strong>Colt Technological Services</strong>, and works across the

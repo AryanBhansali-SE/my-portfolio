@@ -4,7 +4,7 @@ import { HoloPhoto } from "./HoloPhoto";
 import { HeroParticles } from "./HeroParticles";
 
 const TAGS = [
-  "Text-to-SQL",
+  "NLQ Systems",
   "Semantic Search",
   "LLM Retrieval",
   "FastAPI",
@@ -91,10 +91,10 @@ export function HeroSection() {
               <p className="hero-subtitle">
                 AI Engineer building{" "}
                 <strong style={{ color: "var(--cyan)", fontWeight: 700 }}>
-                  natural-language interfaces
+                  dynamic NLQ systems
                 </strong>{" "}
-                for enterprise data — text-to-SQL, semantic search, and
-                LLM-powered retrieval.
+                that turn plain-English questions into enterprise data —
+                semantic search, LLM-powered retrieval, and full-stack AI products.
               </p>
             </FadeUp>
 

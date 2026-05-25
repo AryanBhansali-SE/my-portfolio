@@ -49,7 +49,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease }}
             >
-              AI ENGINEER · CLASS OF 2026
+              AI ENGINEER · GURUGRAM, INDIA
             </motion.div>
           )}
         </AnimatePresence>
