@@ -1,69 +1,72 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 
-// Define the type for the frontmatter data for better type safety
-interface PostData {
-  title: string;
-  date: string;
-  // Add any other expected frontmatter fields here
+function parseFrontmatter(raw: string) {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!match) return { data: {} as Record<string, string>, content: raw };
+  const data: Record<string, string> = {};
+  for (const line of match[1].split("\n")) {
+    const idx = line.indexOf(":");
+    if (idx < 1) continue;
+    data[line.slice(0, idx).trim()] = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+  }
+  return { data, content: match[2].trim() };
 }
 
-// ------------------------------------------------------------------
-// 1. GENERATE STATIC PARAMS (CRITICAL FOR output: 'export')
-// This function tells Next.js which pages to build during 'npm run build'.
-// ------------------------------------------------------------------
+function mdToHtml(md: string): string {
+  const esc = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const inline = (s: string) =>
+    esc(s)
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.+?)\*/g, "<em>$1</em>")
+      .replace(/`(.+?)`/g, "<code>$1</code>")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+  const out: string[] = [];
+  let inList = false;
+  for (const line of md.split("\n")) {
+    const h3 = line.match(/^### (.+)$/);
+    const h2 = line.match(/^## (.+)$/);
+    const h1 = line.match(/^# (.+)$/);
+    const li = line.match(/^[-*] (.+)$/);
+    if (h3)             { if (inList) { out.push("</ul>"); inList = false; } out.push(`<h3>${inline(h3[1])}</h3>`); }
+    else if (h2)        { if (inList) { out.push("</ul>"); inList = false; } out.push(`<h2>${inline(h2[1])}</h2>`); }
+    else if (h1)        { if (inList) { out.push("</ul>"); inList = false; } out.push(`<h1>${inline(h1[1])}</h1>`); }
+    else if (li)        { if (!inList) { out.push("<ul>"); inList = true; }  out.push(`<li>${inline(li[1])}</li>`); }
+    else if (!line.trim()) { if (inList) { out.push("</ul>"); inList = false; } }
+    else                { if (inList) { out.push("</ul>"); inList = false; } out.push(`<p>${inline(line)}</p>`); }
+  }
+  if (inList) out.push("</ul>");
+  return out.join("\n");
+}
+
 export async function generateStaticParams() {
-  // NOTE: Adjusting path to correctly find posts inside the web/app/blog/posts folder.
-  const postsDirectory = path.join(process.cwd(), "app", "posts");
-
-  // Get all file names in the directory
-  const filenames = fs.readdirSync(postsDirectory);
-
-  // Map the filenames to the required { slug: string } format
-  return filenames
-    .filter((filename) => filename.endsWith(".md")) // Only process markdown files
-    .map((filename) => ({
-      // The slug is the file name without the .md extension
-      slug: filename.replace(/\.md$/, ""),
-    }));
+  const postsDir = path.join(process.cwd(), "app", "posts");
+  return fs
+    .readdirSync(postsDir)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => ({ slug: f.replace(/\.md$/, "") }));
 }
 
-// ------------------------------------------------------------------
-// 2. BLOG POST COMPONENT
-// ------------------------------------------------------------------
 export default async function BlogPost({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  // Adjusting path to correctly find the specific post file
-  const filePath = path.join(process.cwd(), "app", "posts", `${slug}.md`);
-
-  // Your existing logic starts here:
-  const fileContents = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContents);
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
-  const postData = data as PostData; // Cast data to the defined interface
+  const raw = fs.readFileSync(
+    path.join(process.cwd(), "app", "posts", `${slug}.md`),
+    "utf-8"
+  );
+  const { data, content } = parseFrontmatter(raw);
 
   return (
     <article className="blog-post-container">
-      {/* Set the title dynamically from frontmatter */}
-      <h1 className="post-title">{postData.title}</h1>
-      {/* Display the date */}
-      <p className="post-date">Published on: {postData.date}</p>
-
+      <h1 className="post-title">{data.title}</h1>
+      <p className="post-date">Published on: {data.date}</p>
       <hr />
-
-      {/* Renders the HTML converted from Markdown */}
-      <div
-        className="post-content"
-        dangerouslySetInnerHTML={{ __html: contentHtml }}
-      />
+      <div className="post-content" dangerouslySetInnerHTML={{ __html: mdToHtml(content) }} />
     </article>
   );
 }
