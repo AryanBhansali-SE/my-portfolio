@@ -42,7 +42,7 @@ export function StarField() {
         const a = s.opacity * (0.45 + 0.55 * Math.sin(t * s.twinkleSpeed * 60 + s.twinkleOffset));
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(220, 240, 255, ${a})`;
+        ctx.fillStyle = `rgba(90, 65, 30, ${a * 0.5})`;
         ctx.fill();
       }
       animId = requestAnimationFrame(draw);

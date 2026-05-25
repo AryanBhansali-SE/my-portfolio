@@ -4,36 +4,36 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --bg:        #000000;
-  --bg-2:      #030712;
-  --bg-3:      #060d1f;
+  --bg:        #faf7f2;
+  --bg-2:      #f5f0e8;
+  --bg-3:      #ede8de;
 
-  --surface:   rgba(255, 255, 255, 0.03);
-  --surface-2: rgba(255, 255, 255, 0.055);
-  --surface-3: rgba(255, 255, 255, 0.08);
+  --surface:   rgba(0, 0, 0, 0.028);
+  --surface-2: rgba(0, 0, 0, 0.055);
+  --surface-3: rgba(0, 0, 0, 0.09);
 
-  --text:      #f0f4ff;
-  --text-2:    #c8d3ef;
-  --muted:     #6b7a99;
+  --text:      #1a1510;
+  --text-2:    #3d3530;
+  --muted:     #8a7d70;
 
-  --cyan:      #00d4ff;
-  --violet:    #7c3aed;
-  --green:     #00ff88;
-  --gold:      #ffd700;
+  --cyan:      #b5830c;
+  --violet:    #7a3a2a;
+  --green:     #3d7a4a;
+  --gold:      #c9950c;
 
-  --border:    rgba(0, 212, 255, 0.14);
-  --border-2:  rgba(255, 255, 255, 0.07);
-  --border-3:  rgba(255, 255, 255, 0.14);
+  --border:    rgba(181, 131, 12, 0.22);
+  --border-2:  rgba(0, 0, 0, 0.1);
+  --border-3:  rgba(0, 0, 0, 0.18);
 
-  --glow-c:  rgba(0, 212, 255, 0.25);
-  --glow-v:  rgba(124, 58, 237, 0.25);
+  --glow-c:  rgba(181, 131, 12, 0.18);
+  --glow-v:  rgba(122, 58, 42, 0.14);
 
   --r:    16px;
   --r-sm: 10px;
   --r-lg: 24px;
 
-  --shadow:    0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 20px 80px rgba(0, 0, 0, 0.65);
+  --shadow:    0 8px 40px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 80px rgba(0, 0, 0, 0.14);
 
   --maxw:  1200px;
   --gap:   20px;
@@ -76,8 +76,8 @@ button { font-family: inherit; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(181, 131, 12, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181, 131, 12, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   animation: grid-drift 24s linear infinite;
 }
@@ -88,7 +88,7 @@ button { font-family: inherit; }
   width: 900px;
   height: 900px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(181, 131, 12, 0.06) 0%, transparent 70%);
   top: -200px;
   right: -200px;
   animation: orb-1 18s ease-in-out infinite alternate;
@@ -99,7 +99,7 @@ button { font-family: inherit; }
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(122, 58, 42, 0.05) 0%, transparent 70%);
   bottom: -150px;
   left: -150px;
   z-index: 0;
@@ -146,7 +146,7 @@ button { font-family: inherit; }
   inset: 0;
   pointer-events: none;
   z-index: 9996;
-  background: radial-gradient(ellipse at 50% 40%, transparent 35%, rgba(0, 0, 0, 0.62) 100%);
+  background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(180, 155, 110, 0.18) 100%);
 }
 
 @keyframes grain {
@@ -190,7 +190,7 @@ button { font-family: inherit; }
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #000;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +238,7 @@ button { font-family: inherit; }
   padding: 16px 36px;
   border: 1px solid var(--cyan);
   border-radius: 4px;
-  background: rgba(0, 212, 255, 0.06);
+  background: rgba(181, 131, 12, 0.06);
   color: var(--cyan);
   font-size: 12px;
   font-weight: 800;
@@ -249,7 +249,7 @@ button { font-family: inherit; }
 }
 
 .ls-launch:hover {
-  background: rgba(0, 212, 255, 0.14);
+  background: rgba(181, 131, 12, 0.18);
   box-shadow: 0 0 40px var(--glow-c);
   transform: translateY(-2px);
 }
@@ -275,7 +275,7 @@ button { font-family: inherit; }
 
 .nav-header--scrolled {
   padding: 10px 0;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(250, 247, 242, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-2);
@@ -306,9 +306,9 @@ button { font-family: inherit; }
   justify-content: center;
   font-size: 12px;
   font-weight: 900;
-  color: #fff;
+  color: #faf7f2;
   letter-spacing: -0.5px;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(181, 131, 12, 0.25);
 }
 
 .nav-brand-name {
@@ -381,15 +381,15 @@ button { font-family: inherit; }
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.5px;
-  color: #000;
+  color: #faf7f2;
   background: var(--cyan);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 20px rgba(181, 131, 12, 0.28);
   transition: all 0.25s var(--ease);
 }
 
 .nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(0, 212, 255, 0.55);
+  box-shadow: 0 0 35px rgba(181, 131, 12, 0.45);
 }
 
 .nav-cta--desktop { display: none; }
@@ -468,7 +468,7 @@ button { font-family: inherit; }
   transition: background 0.2s ease;
 }
 
-.nav-mobile-resume:hover { background: rgba(0, 212, 255, 0.08); }
+.nav-mobile-resume:hover { background: rgba(181, 131, 12, 0.07); }
 
 /* Copy email button */
 .contact-email-row {
@@ -495,7 +495,7 @@ button { font-family: inherit; }
 .contact-copy-btn:hover {
   border-color: var(--cyan);
   color: var(--cyan);
-  background: rgba(0, 212, 255, 0.06);
+  background: rgba(181, 131, 12, 0.06);
 }
 
 /* ─── Hero Section ────────────────────────────────────────────── */
@@ -516,7 +516,7 @@ button { font-family: inherit; }
   padding: 6px 14px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: rgba(0, 212, 255, 0.06);
+  background: rgba(181, 131, 12, 0.06);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 3px;
@@ -553,12 +553,12 @@ button { font-family: inherit; }
 .hero-hl-hollow {
   display: block;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.18);
+  -webkit-text-stroke: 2px rgba(26, 21, 16, 0.18);
 }
 
 @media (max-width: 600px) {
   .hero-headline { letter-spacing: -2px; }
-  .hero-hl-hollow { -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18); }
+  .hero-hl-hollow { -webkit-text-stroke: 1px rgba(26, 21, 16, 0.12); }
 }
 
 .hero-subtitle {
@@ -593,8 +593,8 @@ button { font-family: inherit; }
 .hero-tag:hover {
   border-color: var(--cyan);
   color: var(--cyan);
-  background: rgba(0, 212, 255, 0.06);
-  box-shadow: 0 0 16px rgba(0, 212, 255, 0.15);
+  background: rgba(181, 131, 12, 0.06);
+  box-shadow: 0 0 16px rgba(181, 131, 12, 0.15);
 }
 
 .hero-ctas {
@@ -615,16 +615,16 @@ button { font-family: inherit; }
   font-weight: 800;
   letter-spacing: 0.3px;
   background: linear-gradient(135deg, var(--cyan), var(--violet));
-  color: #fff;
+  color: #faf7f2;
   border: none;
   cursor: pointer;
   transition: all 0.3s var(--ease);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+  box-shadow: 0 0 30px rgba(181, 131, 12, 0.22);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 50px rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 50px rgba(181, 131, 12, 0.38);
 }
 
 .btn-secondary {
@@ -707,10 +707,10 @@ button { font-family: inherit; }
   position: relative;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(0, 212, 255, 0.18);
+  border: 1px solid rgba(181, 131, 12, 0.18);
   box-shadow:
     0 0 0 1px rgba(0, 212, 255, 0.05),
-    0 0 60px rgba(0, 212, 255, 0.1),
+    0 0 60px rgba(181, 131, 12, 0.1),
     0 40px 80px rgba(0, 0, 0, 0.7);
 }
 
@@ -965,8 +965,8 @@ button { font-family: inherit; }
   gap: 6px;
   padding: 5px 12px;
   border-radius: 6px;
-  background: rgba(0, 212, 255, 0.07);
-  border: 1px solid rgba(0, 212, 255, 0.18);
+  background: rgba(181, 131, 12, 0.06);
+  border: 1px solid rgba(181, 131, 12, 0.18);
   font-size: 12px;
   font-weight: 700;
   color: var(--cyan);
@@ -1045,7 +1045,7 @@ button { font-family: inherit; }
   inset: 0;
   background: radial-gradient(
     circle at var(--mx, 50%) var(--my, 50%),
-    rgba(0, 212, 255, 0.07),
+    rgba(181, 131, 12, 0.06),
     transparent 60%
   );
   opacity: 0;
@@ -1398,11 +1398,11 @@ button { font-family: inherit; }
   padding: 16px 30px;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--cyan), var(--violet));
-  color: #fff;
+  color: #faf7f2;
   font-size: 14px;
   font-weight: 800;
   transition: all 0.3s var(--ease);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 30px rgba(181, 131, 12, 0.18);
 }
 
 .contact-email-btn:hover {
@@ -1500,8 +1500,8 @@ button { font-family: inherit; }
   pointer-events: none;
   background: radial-gradient(
     ellipse at 50% 50%,
-    rgba(0, 212, 255, 0.55) 0%,
-    rgba(0, 212, 255, 0.15) 35%,
+    rgba(181, 131, 12, 0.45) 0%,
+    rgba(181, 131, 12, 0.15) 35%,
     rgba(124, 58, 237, 0.08) 60%,
     transparent 75%
   );
@@ -1546,7 +1546,7 @@ button { font-family: inherit; }
 .holo-ring {
   position: absolute;
   border-radius: 10px;
-  border: 1px solid rgba(0, 212, 255, 0.18);
+  border: 1px solid rgba(181, 131, 12, 0.18);
   pointer-events: none;
 }
 
@@ -1557,7 +1557,7 @@ button { font-family: inherit; }
 
 .holo-ring--2 {
   inset: -22px;
-  border-color: rgba(0, 212, 255, 0.08);
+  border-color: rgba(181, 131, 12, 0.07);
   animation: ring-pulse 4s ease-in-out 0.5s infinite;
 }
 
@@ -1573,10 +1573,10 @@ button { font-family: inherit; }
   overflow: hidden;
   border: 1px solid rgba(0, 212, 255, 0.5);
   box-shadow:
-    0 0 0 1px rgba(0, 212, 255, 0.12),
+    0 0 0 1px rgba(181, 131, 12, 0.1),
     0 0 28px rgba(0, 212, 255, 0.22),
-    0 0 72px rgba(0, 212, 255, 0.08),
-    inset 0 0 24px rgba(0, 212, 255, 0.04);
+    0 0 72px rgba(181, 131, 12, 0.07),
+    inset 0 0 24px rgba(181, 131, 12, 0.05);
   animation: holo-card-flicker 12s ease-in-out infinite;
 }
 
@@ -1654,9 +1654,9 @@ button { font-family: inherit; }
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.1) 0%,
+    rgba(181, 131, 12, 0.1) 0%,
     transparent 45%,
-    rgba(124, 58, 237, 0.07) 100%
+    rgba(122, 58, 42, 0.05) 100%
   );
   pointer-events: none;
   z-index: 3;
@@ -1669,7 +1669,7 @@ button { font-family: inherit; }
   background: linear-gradient(
     to bottom,
     #000 0%,
-    rgba(0, 212, 255, 0.25) 100%
+    rgba(181, 131, 12, 0.22) 100%
   );
   z-index: 10;
   transform-origin: top;
@@ -1729,7 +1729,7 @@ button { font-family: inherit; }
 
 .holo-status-bar {
   height: 1px;
-  background: rgba(0, 212, 255, 0.12);
+  background: rgba(181, 131, 12, 0.1);
   margin-bottom: 6px;
   position: relative;
   overflow: hidden;
@@ -1833,7 +1833,7 @@ button { font-family: inherit; }
   margin: -3px 0 0 -3px;
   border-radius: 50%;
   background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan), 0 0 28px rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 12px var(--cyan), 0 0 28px rgba(181, 131, 12, 0.38);
 }
 
 .cursor-ring {
@@ -1841,7 +1841,7 @@ button { font-family: inherit; }
   height: 34px;
   margin: -17px 0 0 -17px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 212, 255, 0.55);
+  border: 1px solid rgba(181, 131, 12, 0.45);
   background: radial-gradient(circle, rgba(0,212,255,0.06), transparent 70%);
   transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
 }
@@ -1942,7 +1942,7 @@ button { font-family: inherit; }
   z-index: 9998;
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.85), transparent 60%),
-    #ffffff;
-  mix-blend-mode: screen;
+    radial-gradient(circle at 50% 50%, rgba(181, 131, 12, 0.6), transparent 60%),
+    #faf7f2;
+  mix-blend-mode: multiply;
 }
