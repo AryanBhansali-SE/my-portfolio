@@ -24,10 +24,10 @@ export function MissionBrief() {
     <section id="mission" className="section">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="sec-label">01 // Mission Brief</div>
           <h2 className="sec-title"><span className="glitch-title" data-text={"The Core Directive"}>The Core Directive</span></h2>
@@ -35,10 +35,10 @@ export function MissionBrief() {
 
         <motion.div
           className="mission-card"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="mission-inner">
             <p className="mission-text">
@@ -64,7 +64,7 @@ export function MissionBrief() {
                   transition={{
                     duration: 0.5,
                     delay: 0.2 + i * 0.1,
-                    ease: [0.25, 0.4, 0.25, 1],
+                    ease: [0.16, 1, 0.3, 1],
                   }}
                 >
                   <div className="mission-hl-icon">{h.icon}</div>

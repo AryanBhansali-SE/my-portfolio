@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="bg-anim" aria-hidden="true" />
         <div className="bg-orb2" aria-hidden="true" />
         <div className="noise" aria-hidden="true" />
+        <div className="vignette" aria-hidden="true" />
         {children}
       </body>
     </html>

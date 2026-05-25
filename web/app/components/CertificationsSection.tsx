@@ -31,10 +31,10 @@ export function CertificationsSection() {
     <section id="verified" className="section">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="sec-label">06 // Verified Modules</div>
           <h2 className="sec-title"><span className="glitch-title" data-text={"Certifications"}>Certifications</span></h2>
@@ -55,7 +55,7 @@ export function CertificationsSection() {
               transition={{
                 duration: 0.55,
                 delay: i * 0.1,
-                ease: [0.25, 0.4, 0.25, 1],
+                ease: [0.16, 1, 0.3, 1],
               }}
             >
               <div>

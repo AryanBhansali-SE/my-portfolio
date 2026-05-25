@@ -18,10 +18,10 @@ export function ContactSection() {
     <section id="contact" className="section">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="sec-label">07 // Initiate Contact</div>
           <h2 className="sec-title"><span className="glitch-title" data-text={"Let's Build"}>Let&apos;s Build</span></h2>
@@ -31,10 +31,10 @@ export function ContactSection() {
           {/* Main card */}
           <motion.div
             className="contact-main"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 70 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="contact-headline">Open to Opportunities</div>
             <p className="contact-desc">
@@ -56,7 +56,7 @@ export function ContactSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.65, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <a
               href="https://github.com/aryanbhansali"

@@ -56,10 +56,10 @@ export function ProjectsSection() {
     <section id="systems" className="section">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="sec-label">03 // Featured Systems</div>
           <h2 className="sec-title"><span className="glitch-title" data-text={"Projects"}>Projects</span></h2>
@@ -74,13 +74,13 @@ export function ProjectsSection() {
               key={i}
               ref={(el) => { if (el) cardsRef.current[i] = el; }}
               className="proj-card"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 70 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-80px" }}
               transition={{
-                duration: 0.7,
+                duration: 1.0,
                 delay: i * 0.15,
-                ease: [0.25, 0.4, 0.25, 1],
+                ease: [0.16, 1, 0.3, 1],
               }}
             >
               {/* Status */}
