@@ -7,9 +7,6 @@ const nextConfig = {
   // CRITICAL: Enables static HTML export
   output: "export",
 
-  // ESLint not installed in this project; skip during builds
-  eslint: { ignoreDuringBuilds: true },
-
   // TypeScript errors are checked separately
   typescript: { ignoreBuildErrors: false },
 
