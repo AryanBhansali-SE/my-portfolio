@@ -91,7 +91,7 @@ export default function HomePage() {
               <span className="footer-copy">© {new Date().getFullYear()} · Built with Next.js</span>
             </div>
             <div className="footer-links">
-              <a href="https://github.com/aryanbhansali" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
+              <a href="https://github.com/AryanBhansali-SE" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
               <a href="https://linkedin.com/in/aryanbhansali10" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
               <a href="aryan_resume.pdf" target="_blank" rel="noopener noreferrer" className="footer-link">Résumé</a>
             </div>

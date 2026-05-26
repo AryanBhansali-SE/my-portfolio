@@ -70,11 +70,11 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 1.0, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a href="https://github.com/aryanbhansali" target="_blank" rel="noopener noreferrer" className="contact-link-card">
+            <a href="https://github.com/AryanBhansali-SE" target="_blank" rel="noopener noreferrer" className="contact-link-card">
               <div className="contact-link-icon contact-link-icon--gh"><GHIcon /></div>
               <div>
                 <div className="contact-link-label">GitHub</div>
-                <div className="contact-link-value">github.com/aryanbhansali</div>
+                <div className="contact-link-value">github.com/AryanBhansali-SE</div>
               </div>
             </a>
 
